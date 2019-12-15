@@ -8,7 +8,8 @@ namespace Backend.Commands.lyokowarrior
     public class Virtualize : Command
     {
         public override string Name { get; set; } = "virt";
-        public override string Usage { get; } = "virt.[warrior]";
+        public override string Usage { get; } = "lw.virt.[warrior]";
+        public override int MinArgs { get; set; } = 1;
 
         protected override void DoCommand(string[] args)
         {

@@ -9,14 +9,23 @@ namespace BackEnd
 {
     public class CommandListener
     {
-        private List<Command> Commands;
+        private List<Command> Commands=new List<Command>();
+
+        public void AddCommand(Command command)
+        {
+            Commands.Add(command);
+        }
 
         public CommandListener()
         {
-            Commands = new List<Command>(){new Xana(), new Aelita(), new Devirtualize(), new Hurt(), new Kill(), new Virtualize(), new Heal(), new Frontier(),new Xanafy(), new Translate()};
+            //Commands = new List<Command>(){new Xana(), new Aelita(), new Devirtualize(), new Hurt(), new Kill(), new Virtualize(), new Heal(), new Frontier(),new Xanafy(), new Translate()};
 
         }
-        
+
+        public List<Command> GetCommands()
+        {
+            return Commands;
+        }
         
         public void OnCommand(string arg)
         {

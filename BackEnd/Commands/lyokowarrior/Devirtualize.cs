@@ -6,7 +6,8 @@ namespace Backend.Commands.lyokowarrior
     public class Devirtualize : Command
     {
         public override string Name { get; set; } = "devirt";
-        public override string Usage { get; } = "devirt.[warrior]";
+        public override string Usage { get; } = "lw.devirt.[warrior]";
+        public override int MinArgs { get; set; } = 1;
 
         protected override void DoCommand(string[] args)
         {

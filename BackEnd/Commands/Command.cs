@@ -9,6 +9,8 @@ namespace Backend.Commands
     public abstract class Command
     {
         public abstract string Name { get; set; }
+        public virtual int MinArgs { get; set; } = 0;
+        public virtual int MaxArgs { get; set; } = Int32.MaxValue;
         public virtual string DisplayName => Name;
         public virtual string Usage => GetSubCommandsAsString();
         private string[] _args;
@@ -18,6 +20,7 @@ namespace Backend.Commands
             _args = args ?? new string[]{};
             try
             {
+                CheckLength(MinArgs, MaxArgs);
                 DoCommand(_args);
             }
             catch (MiniLyokoException e)

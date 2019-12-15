@@ -14,8 +14,8 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -60,6 +60,7 @@
     <Compile Include="Commands\lyokowarrior\Heal.cs" />
     <Compile Include="Commands\lyokowarrior\Hurt.cs" />
     <Compile Include="Commands\lyokowarrior\Kill.cs" />
+    <Compile Include="Commands\lyokowarrior\LW.cs" />
     <Compile Include="Commands\lyokowarrior\Translate.cs" />
     <Compile Include="Commands\lyokowarrior\Virtualize.cs" />
     <Compile Include="Commands\lyokowarrior\Xanafy.cs" />
