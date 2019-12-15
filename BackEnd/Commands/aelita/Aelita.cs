@@ -5,6 +5,7 @@ namespace Backend.Commands.aelita
     public class Aelita : Command
     {
         public override string Name { get; set; } = "aelita";
+        public override string Usage { get; } = "aelita.[world].[sector].[towerNumber]";
         public override int MaxArgs { get; set; } = 3;
         protected override void DoCommand(string[] args)
         {

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Backend.Commands;
+using LyokoAPI.Events;
 using Backend.Commands.aelita;
 using Backend.Commands.lyokowarrior;
 using Backend.Commands.xana;
@@ -40,7 +41,13 @@ namespace BackEnd
                 commandargs = new string[] { };
             }
             var command = Commands.Find(commandd => commandd.Name.Equals(commandname));
-            command?.Run(commandargs);
+            if(command!=null){
+                command?.Run(commandargs);
+            }
+            else
+            {
+                CommandOutputEvent.Call("Error",$"The command \"{commandname}\" does not exist.");
+            }
         }
     }
 }

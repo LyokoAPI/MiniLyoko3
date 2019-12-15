@@ -17,7 +17,7 @@ namespace Backend.Commands.lyokowarrior
                 return;
             }
 
-            if (warrior.Status != Status.VIRTUALIZED)
+            if (warrior.Status != Status.VIRTUALIZED&&warrior.Status!=Status.XANAFIED)
             {
                 throw new CommandException(this,"Can't xanafy warrior!");
                 return;

@@ -13,7 +13,6 @@ namespace Backend.Commands
 
         public Help(ref List<Command> commands)
         {
-            //commands.Add(this);
             _commands = commands;
         }
 
@@ -43,7 +42,7 @@ namespace Backend.Commands
         private string CommandList()
         {
             string list = "[help";
-            foreach (var command in _commands)
+            foreach (var command in _commands.GetRange(0,_commands.Count-1))
             {
                 list += $",{command.Name}";
             }

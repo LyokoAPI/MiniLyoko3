@@ -57,7 +57,7 @@ namespace Backend.Commands
                     return true;
                 }
             }
-
+            throw new CommandException(this, $"The subcommand \"{subcommand}\" is not part of the \"{Name}\" command.");
             return false;
 
         }
@@ -65,12 +65,12 @@ namespace Backend.Commands
         {
             if (_args.Length < min)
             {
-                throw new CommandException(this,$"not enough arguments! minimum {min}");
+                throw new CommandException(this,$"Not enough arguments! Minimum {min}.");
             }
 
             if (_args.Length > max)
             {
-                throw new CommandException(this, $"too much arguments! maximum {max}");
+                throw new CommandException(this, $"Too much arguments! Maximum {max}.");
             }
 
             return true;
@@ -82,7 +82,7 @@ namespace Backend.Commands
             int i = 0;
             foreach (var letter in text)
             {
-                if (i % 73 == 0)
+                if (i % 73 == 0&&i!=0)
                     text = text.Insert(i, "\n");
                 i += 1;
             }

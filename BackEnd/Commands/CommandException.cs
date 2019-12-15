@@ -19,7 +19,7 @@ namespace Backend.Commands
             int i = 0;
             foreach (var letter in text)
             {
-                if (i % 73 == 0)
+                if (i % 73 == 0&&i!=0)
                     text = text.Insert(i, "\n");
                 i += 1;
             }

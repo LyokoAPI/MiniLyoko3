@@ -25,6 +25,7 @@ namespace MiniLyoko3
             _commandListener.AddCommand(new LW());
             _commandListener.AddCommand(new Aelita());
 
+            //Ensure Help command is always the last command to be added to the listener
             List<Command> commands = _commandListener.GetCommands();
             _commandListener.AddCommand(new Help(ref commands));
         }
