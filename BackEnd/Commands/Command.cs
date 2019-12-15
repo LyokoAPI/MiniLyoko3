@@ -76,22 +76,10 @@ namespace Backend.Commands
             return true;
         }
 
-        //Extremely Primative Wrap Text
-        private string WrapText(string text)
-        {
-            int i = 0;
-            foreach (var letter in text)
-            {
-                if (i % 73 == 0&&i!=0)
-                    text = text.Insert(i, "\n");
-                i += 1;
-            }
-            return text;
-        }
 
         protected void Output(string message)
         {
-            CommandOutputEvent.Call(this.DisplayName,WrapText(message));
+            CommandOutputEvent.Call(this.DisplayName,message);
         }
 
         protected int CheckNumber(int index)
@@ -111,9 +99,10 @@ namespace Backend.Commands
             string sub = "[";
             foreach (var command in subCommands)
             {
-                sub += $"{this.Name}.{command.Name},";
+                sub += $"{this.Name}.{command.Name}, ";
             }
 
+            sub = sub.TrimEnd(' ');
             sub = sub.TrimEnd(',');
             sub+=(']');
             return sub;

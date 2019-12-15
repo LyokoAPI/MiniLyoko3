@@ -44,7 +44,7 @@ namespace Backend.Commands
             string list = "[help";
             foreach (var command in _commands.GetRange(0,_commands.Count-1))
             {
-                list += $",{command.Name}";
+                list += $", {command.Name}";
             }
 
             list += ("]");
@@ -54,7 +54,7 @@ namespace Backend.Commands
 
         private string GetUsage(Command command)
         {
-            return $"usage:" + command.Usage;
+            return $"usage: " + command.Usage;
         }
 
         
