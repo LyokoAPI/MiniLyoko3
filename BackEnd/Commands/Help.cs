@@ -8,17 +8,18 @@ namespace Backend.Commands
     {
         public override string Name { get; set; } = "help";
         public override string Usage { get; } = "help.[command]";
+        public override int MaxArgs { get; set; } = 1;
         private List<Command> _commands;
 
         public Help(ref List<Command> commands)
         {
-            commands.Add(this);
+            //commands.Add(this);
             _commands = commands;
         }
 
         protected override void DoCommand(string[] args)
         {
-            CheckLength(0, 1);
+            //CheckLength(0, 1);
             if (args.Length == 0)
             {
                 Output(CommandList());
@@ -47,13 +48,14 @@ namespace Backend.Commands
                 list += $",{command.Name}";
             }
 
-            list+=("]");
+            list += ("]");
+
             return list;
         }
 
         private string GetUsage(Command command)
         {
-            return $"usage:"+command.Usage;
+            return $"usage:" + command.Usage;
         }
 
         

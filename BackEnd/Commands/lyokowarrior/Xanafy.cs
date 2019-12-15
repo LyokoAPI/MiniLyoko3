@@ -6,6 +6,8 @@ namespace Backend.Commands.lyokowarrior
     public class Xanafy : Command
     {
         public override string Name { get; set; } = "xanafy";
+        public override string Usage { get; } = "lw.xanafy.[warrior]";
+        public override int MinArgs { get; set; } = 1;
         protected override void DoCommand(string[] args)
         {
             LyokoWarrior warrior = LyokoWarriors.GetByName(args[0].ToLower());
@@ -21,7 +23,7 @@ namespace Backend.Commands.lyokowarrior
                 return;
             }
             LW_XanaficationEvent.Call(warrior);
-            Output(warrior.WarriorName + " virtualized.");
+            Output(warrior.WarriorName + " xanafied.");
         }
     }
 }

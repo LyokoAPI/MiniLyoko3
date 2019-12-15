@@ -9,6 +9,8 @@ namespace Backend.Commands
     public abstract class Command
     {
         public abstract string Name { get; set; }
+        public virtual int MinArgs { get; set; } = 0;
+        public virtual int MaxArgs { get; set; } = Int32.MaxValue;
         public virtual string DisplayName => Name;
         public virtual string Usage => GetSubCommandsAsString();
         private string[] _args;
@@ -18,6 +20,7 @@ namespace Backend.Commands
             _args = args ?? new string[]{};
             try
             {
+                CheckLength(MinArgs, MaxArgs);
                 DoCommand(_args);
             }
             catch (MiniLyokoException e)
@@ -73,9 +76,22 @@ namespace Backend.Commands
             return true;
         }
 
+        //Extremely Primative Wrap Text
+        private string WrapText(string text)
+        {
+            int i = 0;
+            foreach (var letter in text)
+            {
+                if (i % 73 == 0)
+                    text = text.Insert(i, "\n");
+                i += 1;
+            }
+            return text;
+        }
+
         protected void Output(string message)
         {
-            CommandOutputEvent.Call(this.DisplayName,message);
+            CommandOutputEvent.Call(this.DisplayName,WrapText(message));
         }
 
         protected int CheckNumber(int index)

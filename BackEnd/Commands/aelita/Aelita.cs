@@ -5,6 +5,7 @@ namespace Backend.Commands.aelita
     public class Aelita : Command
     {
         public override string Name { get; set; } = "aelita";
+        public override int MaxArgs { get; set; } = 3;
         protected override void DoCommand(string[] args)
         {
             CheckLength(0, 3);

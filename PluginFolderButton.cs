@@ -17,7 +17,7 @@ public class PluginFolderButton : Button
     public override void _Pressed()
     {
         base._Pressed();
-        Process.Start(OS.GetUserDataDir());
+        Process.Start(OS.GetUserDataDir() + "/Plugins/");
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
