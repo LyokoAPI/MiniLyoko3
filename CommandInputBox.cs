@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using LyokoAPI.Events;
 
 public class CommandInputBox : Godot.LineEdit
@@ -9,9 +10,14 @@ public class CommandInputBox : Godot.LineEdit
     // private string b = "text";
 
     // Called when the node enters the scene tree for the first time.
+
+    //private string LastCmd = "";
+    private List<string> LastCmds = new List<string>();
+    private int currentCmd = 0;
+
     public override void _Ready()
     {
-        
+
     }
 
 
@@ -24,6 +30,13 @@ public class CommandInputBox : Godot.LineEdit
 			    _on_Button_pressed();
 		    }
 	    }
+        if (Input.IsActionJustPressed("ui_up"))
+        {
+            if (HasFocus())
+            {
+                _GetLastCommand();
+            }
+        }
   	}
 	  private void _on_Button_pressed()
     {
@@ -34,6 +47,21 @@ public class CommandInputBox : Godot.LineEdit
 	    Label node = GetParent().GetParent().GetParent().GetNode<Label>("CommandPanel/CommandText");
 	    node.Text += $"\n>{GetText()}" ;
 	    CommandInputEvent.Call(GetText());
+        LastCmds.Add(GetText());
+        currentCmd = LastCmds.Count - 1;
         SetText("");
+    }
+
+    private void _GetLastCommand()
+    {
+        if (LastCmds.Count > 0)
+        {
+            currentCmd -= 1;
+            if (currentCmd <0)
+                currentCmd = LastCmds.Count - 1;
+            string cmd = LastCmds[currentCmd];
+            SetText(cmd);
+            SetCursorPosition(cmd.Length);
+        }
     }
 }

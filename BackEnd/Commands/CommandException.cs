@@ -13,6 +13,7 @@ namespace Backend.Commands
             Command = command.DisplayName;
         }
 
+
         public override void Resolve(string parameter = "")
         {
             CommandOutputEvent.Call(Command, ErrorMessage);

@@ -7,6 +7,8 @@ namespace Backend.Commands.lyokowarrior
     public class Translate : Command
     {
         public override string Name { get; set; } = "translate";
+        public override string Usage { get; } = "lw.translate.[warrior]";
+        public override int MinArgs { get; set; } = 1;
         protected override void DoCommand(string[] args)
         {
             LyokoWarrior warrior = LyokoWarriors.GetByName(args[0].ToLower());
@@ -17,11 +19,11 @@ namespace Backend.Commands.lyokowarrior
             } 
             if (warrior.Status != Status.VIRTUALIZED)
             {
-                throw new CommandException(this,"Can't devirt warrior!");
+                throw new CommandException(this,"Can't translate warrior!");
                 return;
             }
             LW_TranslationEvent.Call(warrior,new APILocation("Brazil"));
-            Output(warrior.WarriorName + " devirtualized.");
+            Output(warrior.WarriorName + " translated.");
         }
     }
 }

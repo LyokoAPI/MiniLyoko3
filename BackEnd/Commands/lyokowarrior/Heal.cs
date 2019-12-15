@@ -6,7 +6,8 @@ namespace Backend.Commands.lyokowarrior
     public class Heal : Command
     {
         public override string Name { get; set; } = "heal";
-        public override string Usage { get; } = "heal.[warrior].[amount]";
+        public override string Usage { get; } = "lw.heal.[warrior].[amount]";
+        public override int MinArgs { get; set; } = 2;
 
         protected override void DoCommand(string[] args)
         {

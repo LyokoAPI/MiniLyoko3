@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Backend.Commands;
+using LyokoAPI.Events;
 using Backend.Commands.aelita;
 using Backend.Commands.lyokowarrior;
 using Backend.Commands.xana;
@@ -9,14 +10,23 @@ namespace BackEnd
 {
     public class CommandListener
     {
-        private List<Command> Commands;
+        private List<Command> Commands=new List<Command>();
+
+        public void AddCommand(Command command)
+        {
+            Commands.Add(command);
+        }
 
         public CommandListener()
         {
-            Commands = new List<Command>(){new Xana(), new Aelita(), new Devirtualize(), new Hurt(), new Kill(), new Virtualize(), new Heal(), new Frontier(),new Xanafy(), new Translate()};
+            //Commands = new List<Command>(){new Xana(), new Aelita(), new Devirtualize(), new Hurt(), new Kill(), new Virtualize(), new Heal(), new Frontier(),new Xanafy(), new Translate()};
 
         }
-        
+
+        public List<Command> GetCommands()
+        {
+            return Commands;
+        }
         
         public void OnCommand(string arg)
         {
@@ -31,7 +41,13 @@ namespace BackEnd
                 commandargs = new string[] { };
             }
             var command = Commands.Find(commandd => commandd.Name.Equals(commandname));
-            command?.Run(commandargs);
+            if(command!=null){
+                command?.Run(commandargs);
+            }
+            else
+            {
+                CommandOutputEvent.Call("Error",$"The command \"{commandname}\" does not exist.");
+            }
         }
     }
 }

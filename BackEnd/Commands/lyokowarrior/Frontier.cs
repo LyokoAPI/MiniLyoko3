@@ -6,7 +6,8 @@ namespace Backend.Commands.lyokowarrior
     public class Frontier : Command
     {
         public override string Name { get; set; } = "frontier";
-        public override string Usage { get; } = "frontier.[warrior]";
+        public override string Usage { get; } = "lw.frontier.[warrior]";
+        public override int MinArgs { get; set; } = 1;
 
         protected override void DoCommand(string[] args)
         {

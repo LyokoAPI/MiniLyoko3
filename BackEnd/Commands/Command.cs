@@ -9,6 +9,8 @@ namespace Backend.Commands
     public abstract class Command
     {
         public abstract string Name { get; set; }
+        public virtual int MinArgs { get; set; } = 0;
+        public virtual int MaxArgs { get; set; } = Int32.MaxValue;
         public virtual string DisplayName => Name;
         public virtual string Usage => GetSubCommandsAsString();
         private string[] _args;
@@ -18,6 +20,7 @@ namespace Backend.Commands
             _args = args ?? new string[]{};
             try
             {
+                CheckLength(MinArgs, MaxArgs);
                 DoCommand(_args);
             }
             catch (MiniLyokoException e)
@@ -54,7 +57,7 @@ namespace Backend.Commands
                     return true;
                 }
             }
-
+            throw new CommandException(this, $"The subcommand \"{subcommand}\" is not part of the \"{Name}\" command.");
             return false;
 
         }
@@ -62,16 +65,17 @@ namespace Backend.Commands
         {
             if (_args.Length < min)
             {
-                throw new CommandException(this,$"not enough arguments! minimum {min}");
+                throw new CommandException(this,$"Not enough arguments! Minimum {min}.");
             }
 
             if (_args.Length > max)
             {
-                throw new CommandException(this, $"too much arguments! maximum {max}");
+                throw new CommandException(this, $"Too much arguments! Maximum {max}.");
             }
 
             return true;
         }
+
 
         protected void Output(string message)
         {
