@@ -46,7 +46,7 @@ namespace BackEnd
             }
             else
             {
-                CommandOutputEvent.Call("Error",$"The command \"{commandname}\" does not exist.");
+                //CommandOutputEvent.Call("Error",$"The command \"{commandname}\" does not exist."); remember: this will be called for commands that aren't part of minilyoko as well
             }
         }
     }
