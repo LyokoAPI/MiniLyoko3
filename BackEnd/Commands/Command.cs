@@ -99,9 +99,10 @@ namespace Backend.Commands
             string sub = "[";
             foreach (var command in subCommands)
             {
-                sub += $"{this.Name}.{command.Name},";
+                sub += $"{this.Name}.{command.Name}, ";
             }
 
+            sub = sub.TrimEnd(' ');
             sub = sub.TrimEnd(',');
             sub+=(']');
             return sub;

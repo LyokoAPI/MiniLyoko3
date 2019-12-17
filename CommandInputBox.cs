@@ -48,7 +48,7 @@ public class CommandInputBox : Godot.LineEdit
 	    node.Text += $"\n>{GetText()}" ;
 	    CommandInputEvent.Call(GetText());
         LastCmds.Add(GetText());
-        currentCmd = LastCmds.Count - 1;
+        //currentCmd = LastCmds.Count - 1;
         SetText("");
     }
 

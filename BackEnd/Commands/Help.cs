@@ -8,7 +8,7 @@ namespace Backend.Commands
     {
         public override string Name { get; set; } = "help";
         public override string Usage { get; } = "help.[command]";
-        public override int MaxArgs { get; set; } = 1;
+        //public override int MaxArgs { get; set; } = 1;
         private List<Command> _commands;
 
         public Help(ref List<Command> commands)
@@ -27,6 +27,19 @@ namespace Backend.Commands
             {
                 Command command = _commands.SingleOrDefault(command1 =>
                     command1.Name.Equals(args[0], StringComparison.CurrentCultureIgnoreCase));
+                if (args.Length > 1)
+                {
+                    if (command.subCommands.Count > 0)
+                    {
+                        string cmd = string.Join(".", args);
+                        List<string> tmp = cmd.Split('.').ToList();
+                        tmp.RemoveAt(0);
+                        cmd = string.Join(".", tmp);
+                        command = command.subCommands.SingleOrDefault(command1 =>
+                            command1.Name.Equals(cmd, StringComparison.CurrentCultureIgnoreCase));
+                    }
+                }
+
                 if (command == null)
                 {
                     throw new CommandException(this,"Command not found!");
@@ -44,7 +57,7 @@ namespace Backend.Commands
             string list = "[help";
             foreach (var command in _commands.GetRange(0,_commands.Count-1))
             {
-                list += $",{command.Name}";
+                list += $", {command.Name}";
             }
 
             list += ("]");
@@ -54,7 +67,7 @@ namespace Backend.Commands
 
         private string GetUsage(Command command)
         {
-            return $"usage:" + command.Usage;
+            return $"usage: " + command.Usage;
         }
 
         
