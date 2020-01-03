@@ -8,7 +8,7 @@ using Path = System.IO.Path;
 public class MainPanel : Panel
 {
     public RichTextLabel LogText { get; set; }
-    public Label CommandOutputBox { get; set; }
+    public RichTextLabel CommandOutputBox { get; set; }
 
     private MiniLyoko3.Listener _listener;
     private LyokoPluginLoader.PluginLoader _loader;
@@ -22,7 +22,7 @@ public class MainPanel : Panel
     {
         
         LogText = GetNode<RichTextLabel>("LogPanel/LogText");
-        CommandOutputBox = GetNode<Label>("VBoxContainer/CommandPanel/CommandText");
+        CommandOutputBox = GetNode<RichTextLabel>("VBoxContainer/CommandPanel/RichTextLabel");
         _listener = new MiniLyoko3.Listener(this);
         _listener.StartListening();
         _loader = new PluginLoader(Path.Combine(Godot.OS.GetUserDataDir(),"Plugins"));
