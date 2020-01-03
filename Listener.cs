@@ -12,7 +12,7 @@ namespace MiniLyoko3
 {
     public class Listener : LAPIListener
     {
-        private readonly Label CommandOutput;
+        private readonly RichTextLabel CommandOutput;
         private readonly RichTextLabel LogOutput;
         private CommandListener _commandListener;
         public Listener(MainPanel panel)
@@ -48,12 +48,12 @@ namespace MiniLyoko3
 
         private void ToLog(string text)
         {
-            LogOutput.Text += text;
+            LogOutput.Text += $"{text}\n";
         }
 
         private void ToCommandOut(string text)
         {
-            CommandOutput.Text += "\n"+(text);
+            CommandOutput.Text += $"{text}\n";
         }
         
         

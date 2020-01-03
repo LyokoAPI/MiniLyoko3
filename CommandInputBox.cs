@@ -29,7 +29,7 @@ public class CommandInputBox : Godot.LineEdit
 		    {
 			    _on_Button_pressed();
 		    }
-	    }
+        }
         if (Input.IsActionJustPressed("ui_up"))
         {
             if (HasFocus())
@@ -37,18 +37,18 @@ public class CommandInputBox : Godot.LineEdit
                 _GetLastCommand();
             }
         }
-  	}
+    }
 	  private void _on_Button_pressed()
     {
 	    if (Text == "" || Text.Empty())
 	    {
 		    return;
 	    }
-	    Label node = GetParent().GetParent().GetParent().GetNode<Label>("CommandPanel/CommandText");
-	    node.Text += $"\n>{GetText()}" ;
-	    CommandInputEvent.Call(GetText());
+	    RichTextLabel node = GetParent().GetParent().GetParent().GetNode<RichTextLabel>("CommandPanel/RichTextLabel");
+	    node.Text += $">{GetText()}\n";
+        CommandInputEvent.Call(GetText());
         LastCmds.Add(GetText());
-        //currentCmd = LastCmds.Count - 1;
+        currentCmd = 0;
         SetText("");
     }
 
@@ -57,7 +57,7 @@ public class CommandInputBox : Godot.LineEdit
         if (LastCmds.Count > 0)
         {
             currentCmd -= 1;
-            if (currentCmd <0)
+            if (currentCmd < 0)
                 currentCmd = LastCmds.Count - 1;
             string cmd = LastCmds[currentCmd];
             SetText(cmd);
