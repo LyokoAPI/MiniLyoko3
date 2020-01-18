@@ -37,7 +37,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="LyokoPluginLoader, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\LyokoPluginLoader.2.0.0-beta317\lib\LyokoPluginLoader.dll</HintPath>
+      <HintPath>..\packages\LyokoPluginLoader.2.0.0-beta318\lib\LyokoPluginLoader.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
