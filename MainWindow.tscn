@@ -39,6 +39,7 @@ margin_left = 33.0
 margin_top = 37.0
 margin_right = 58.0
 margin_bottom = 51.0
+size_flags_vertical = 1
 text = "Log"
 
 [node name="CommandsLabel" type="Label" parent="Panel"]

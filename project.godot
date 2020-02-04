@@ -21,6 +21,12 @@ config/use_custom_user_dir=true
 config/custom_user_dir_name="MiniLyoko3"
 config/icon="res://icon.png"
 
+[display]
+
+window/dpi/allow_hidpi=true
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [input]
 
 ui_accept={
