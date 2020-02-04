@@ -17,7 +17,7 @@ namespace Backend.Commands.lyokowarrior
                 throw new CommandException(this,"Invalid warrior!");
                 return;
             } 
-            if (warrior.Status != Status.VIRTUALIZED)
+            if (warrior.Status != LW_Status.VIRTUALIZED)
             {
                 throw new CommandException(this,"Can't translate warrior!");
                 return;

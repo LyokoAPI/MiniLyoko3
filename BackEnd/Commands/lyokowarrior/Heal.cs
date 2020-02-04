@@ -16,7 +16,7 @@ namespace Backend.Commands.lyokowarrior
             {
                 throw new CommandException(this,"Invalid warrior!");
             } 
-            if (warrior.Status != Status.VIRTUALIZED)
+            if (warrior.Status != LW_Status.VIRTUALIZED)
             {
                 throw new CommandException(this,"Can't heal warrior!");
             }
