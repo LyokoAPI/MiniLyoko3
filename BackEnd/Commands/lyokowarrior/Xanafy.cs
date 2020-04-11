@@ -1,3 +1,4 @@
+using System.Linq;
 using LyokoAPI.Events.LWEvents;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
 
@@ -17,7 +18,7 @@ namespace Backend.Commands.lyokowarrior
                 return;
             }
 
-            if (warrior.Status != LW_Status.VIRTUALIZED&&warrior.Status!=LW_Status.XANAFIED)
+            if (!warrior.Statuses.Contains(LW_Status.VIRTUALIZED))
             {
                 throw new CommandException(this,"Can't xanafy warrior!");
                 return;

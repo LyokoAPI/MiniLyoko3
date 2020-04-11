@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Diagnostics;
 
-public class PluginFolderButton : Button
+public class PluginButton : Button
 {
     // Declare member variables here. Examples:
     // private int a = 2;
@@ -13,13 +13,12 @@ public class PluginFolderButton : Button
     {
         
     }
-
-    public override void _Pressed()
+	
+	public override void _Pressed()
     {
         base._Pressed();
         Process.Start(OS.GetUserDataDir() + "/Plugins/");
     }
-
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 //  public override void _Process(float delta)
 //  {

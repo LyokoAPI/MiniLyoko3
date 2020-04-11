@@ -1,3 +1,4 @@
+using System.Linq;
 using LyokoAPI.Events.LWEvents;
 using LyokoAPI.RealWorld.Location;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
@@ -15,11 +16,6 @@ namespace Backend.Commands.lyokowarrior
             if (warrior == null)
             {
                 throw new CommandException(this,"Invalid warrior!");
-                return;
-            } 
-            if (warrior.Status != LW_Status.VIRTUALIZED)
-            {
-                throw new CommandException(this,"Can't translate warrior!");
                 return;
             }
             LW_TranslationEvent.Call(warrior,new APILocation("Brazil"));

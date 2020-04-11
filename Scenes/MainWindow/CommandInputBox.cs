@@ -24,7 +24,7 @@ public class CommandInputBox : Godot.LineEdit
  	public override void _Process(float delta)
   	{
 	    if (Input.IsActionPressed("ui_accept"))
-	    {
+	  {
 		    if (HasFocus())
 		    {
 			    _on_Button_pressed();

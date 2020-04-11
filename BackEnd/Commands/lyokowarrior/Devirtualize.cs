@@ -16,7 +16,7 @@ namespace Backend.Commands.lyokowarrior
             {
                 throw new CommandException(this,"Invalid warrior!");
             } 
-            if (warrior.Status != LW_Status.VIRTUALIZED)
+            if (warrior.CantDevirt)
             {
                 throw new CommandException(this,"Can't devirt warrior!");
             }

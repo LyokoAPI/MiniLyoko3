@@ -47,11 +47,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="LyokoAPI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>packages\LyokoAPI.2.0.0-beta13\lib\LyokoAPI.dll</HintPath>
+      <HintPath>packages\LyokoAPI.2.0.0-beta14\lib\LyokoAPI.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="LyokoPluginLoader, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>packages\LyokoPluginLoader.2.0.0-beta319\lib\LyokoPluginLoader.dll</HintPath>
+      <HintPath>packages\LyokoPluginLoader.2.0.0-beta321\lib\LyokoPluginLoader.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -62,13 +62,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandInputBox.cs" />
-    <Compile Include="CommandSendButton.cs" />
-    <Compile Include="Listener.cs" />
-    <Compile Include="LogText.cs" />
-    <Compile Include="MainPanel.cs" />
-    <Compile Include="PluginFolderButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\MainWindow\CommandInputBox.cs" />
+    <Compile Include="Scenes\MainWindow\CommandSendButton.cs" />
+    <Compile Include="Scenes\MainWindow\Listener.cs" />
+    <Compile Include="Scenes\MainWindow\LogText.cs" />
+    <Compile Include="Scenes\MainWindow\MainPanel.cs" />
+    <Compile Include="Scenes\MainWindow\BackButton.cs" />
+    <Compile Include="Scenes\MainWindow\PluginButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

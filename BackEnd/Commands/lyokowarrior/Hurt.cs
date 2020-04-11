@@ -1,3 +1,4 @@
+using System.Linq;
 using LyokoAPI.Events.LWEvents;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
 
@@ -16,7 +17,7 @@ namespace Backend.Commands.lyokowarrior
             {
                 throw new CommandException(this,"Invalid warrior!");
             } 
-            if (warrior.Status != LW_Status.VIRTUALIZED)
+            if (!warrior.Statuses.Contains( LW_Status.VIRTUALIZED))
             {
                 throw new CommandException(this,"Can't hurt warrior!");
             }

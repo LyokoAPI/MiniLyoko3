@@ -33,12 +33,23 @@ public class MainPanel : Panel
     {
         if (what == MainLoop.NotificationWmQuitRequest)
         {
-            _listener.StopListening();
-            _loader.DisableAll();  
+            DisableLoader();
         }
             
     }
 
+    public void DisableLoader()
+    {
+        _listener.StopListening();
+        _loader.DisableAll();
+    }
+
+    public void ReInit()
+    {
+        DisableLoader();
+        _loader.ReInit();
+        _listener.StartListening();
+    }
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 //  public override void _Process(float delta)
 //  {

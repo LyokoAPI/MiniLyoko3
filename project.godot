@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="MiniLyoko3"
-run/main_scene="res://MainWindow.tscn"
+run/main_scene="res://Scenes/MainWindow/MainWindow.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="MiniLyoko3"
 config/icon="res://icon.png"
