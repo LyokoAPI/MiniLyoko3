@@ -42,7 +42,7 @@ namespace Backend.Commands
 
                 if (command == null)
                 {
-                    throw new CommandException(this,"Command not found!");
+                    throw new CommandException(this,$"Command: {args[0]} not found!");
                 }
                 else
                 {
@@ -54,24 +54,29 @@ namespace Backend.Commands
 
         private string CommandList()
         {
-            string list = "[help";
+            string list = $"help: {Usage}";
             foreach (var command in _commands.GetRange(0,_commands.Count-1))
             {
-                list += $", {command.Name}";
+                list += $"\n{command.Name}: {GetReadableUsage(command)}";
             }
-
-            list += ("]");
 
             return list;
         }
 
         private string GetUsage(Command command)
         {
-            return $"usage: " + command.Usage;
+            return $"Usage: " + GetReadableUsage(command);
         }
 
-        
-        
-        
+        private string GetReadableUsage(Command command)
+        {
+            string list = command.Usage;
+            list = list.Replace(", ", ",\n");
+            return list;
+        }
+
+
+
+
     }
 }
