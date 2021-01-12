@@ -1,7 +1,11 @@
 using BackEnd;
-using Backend.Commands.xana;
-using Backend.Commands.lyokowarrior;
-using Backend.Commands.aelita;
+using Backend.Commands.Xana;
+using Backend.Commands.LyokoWarrior;
+using Backend.Commands.Aelita;
+using Backend.Commands.Overvehicle;
+using Backend.Commands.TowerCommand;
+using Backend.Commands.SectorCommand;
+using Backend.Commands.VirtualWorldCommand;
 using Backend.Commands;
 using Godot;
 using LyokoAPI.API;
@@ -22,8 +26,13 @@ namespace MiniLyoko3
             _commandListener = new CommandListener();
 
             _commandListener.AddCommand(new Xana());
+            _commandListener.AddCommand(new Tower());
+            _commandListener.AddCommand(new Sector());
             _commandListener.AddCommand(new LW());
             _commandListener.AddCommand(new Aelita());
+            _commandListener.AddCommand(new OV());
+            _commandListener.AddCommand(new RTTP());
+            _commandListener.AddCommand(new VirtualWorldCommand());
 
             //Ensure Help command is always the last command to be added to the listener
             List<Command> commands = _commandListener.GetCommands();

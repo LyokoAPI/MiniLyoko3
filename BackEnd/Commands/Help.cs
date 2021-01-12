@@ -6,8 +6,8 @@ namespace Backend.Commands
 {
     public class Help : Command
     {
-        public override string Name { get; set; } = "help";
-        public override string Usage { get; } = "help.[command]";
+        public override string Name => "help";
+        public override string Usage => "help.[command]";
         //public override int MaxArgs { get; set; } = 1;
         private List<Command> _commands;
 
@@ -29,13 +29,13 @@ namespace Backend.Commands
                     command1.Name.Equals(args[0], StringComparison.CurrentCultureIgnoreCase));
                 if (args.Length > 1)
                 {
-                    if (command.subCommands.Count > 0)
+                    if (command.SubCommands.Count > 0)
                     {
                         string cmd = string.Join(".", args);
                         List<string> tmp = cmd.Split('.').ToList();
                         tmp.RemoveAt(0);
                         cmd = string.Join(".", tmp);
-                        command = command.subCommands.SingleOrDefault(command1 =>
+                        command = command.SubCommands.SingleOrDefault(command1 =>
                             command1.Name.Equals(cmd, StringComparison.CurrentCultureIgnoreCase));
                     }
                 }
@@ -57,7 +57,7 @@ namespace Backend.Commands
             string list = $"help: {Usage}";
             foreach (var command in _commands.GetRange(0,_commands.Count-1))
             {
-                list += $"\n{command.Name}: {GetReadableUsage(command)}";
+                list += $"\n{command.Name}: {command.Usage}";
             }
 
             return list;
@@ -65,18 +65,7 @@ namespace Backend.Commands
 
         private string GetUsage(Command command)
         {
-            return $"Usage: " + GetReadableUsage(command);
+            return $"Usage: " + command.Usage;
         }
-
-        private string GetReadableUsage(Command command)
-        {
-            string list = command.Usage;
-            list = list.Replace(", ", ",\n");
-            return list;
-        }
-
-
-
-
     }
 }

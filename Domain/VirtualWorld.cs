@@ -22,7 +22,12 @@ namespace Domain
 
         public Tower Activate(string sector, int id, string activator = "XANA")
         {
-            return GetSector(sector)?.Activate(id,activator);
+            return GetSector(sector)?.Activate(id, activator);
+        }
+
+        public Tower Deactivate(string sector, int id)
+        {
+            return GetSector(sector)?.Activate(id, "NONE");
         }
 
         public Tower GetTower(string sector, int number)
@@ -34,7 +39,18 @@ namespace Domain
         {
             if (GetSector(name) == null)
             {
-                Sectors.Add(new Sector(this,name,towers));
+                Sectors.Add(new Sector(this, name, towers));
+            }
+
+            return this;
+        }
+
+        public VirtualWorld RemoveSector(string name)
+        {
+            Sector sector = GetSector(name);
+            if (sector != null)
+            {
+                Sectors.Remove(sector);
             }
 
             return this;

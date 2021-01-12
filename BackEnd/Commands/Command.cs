@@ -8,13 +8,13 @@ namespace Backend.Commands
 {
     public abstract class Command
     {
-        public abstract string Name { get; set; }
-        public virtual int MinArgs { get; set; } = 0;
-        public virtual int MaxArgs { get; set; } = Int32.MaxValue;
+        public abstract string Name { get; }
+        public virtual int MinArgs => 0;
+        public virtual int MaxArgs => Int32.MaxValue;
         public virtual string DisplayName => Name;
         public virtual string Usage => GetSubCommandsAsString();
         private string[] _args;
-        public virtual List<Command> subCommands { get; protected set; } = new List<Command>();
+        public virtual List<Command> SubCommands { get; protected set; } = new List<Command>();
         public void Run(string[] args = null)
         {
             _args = args ?? new string[]{};
@@ -49,7 +49,7 @@ namespace Backend.Commands
                 args = new string[]{};
             }
 
-            foreach (var command in subCommands)
+            foreach (var command in SubCommands)
             {
                 if (command.Name.Equals(subcommand))
                 {
@@ -97,7 +97,7 @@ namespace Backend.Commands
         private string GetSubCommandsAsString()
         {
             string sub = "[";
-            foreach (var command in subCommands)
+            foreach (var command in SubCommands)
             {
                 sub += $"{this.Name}.{command.Name}, ";
             }
@@ -110,7 +110,7 @@ namespace Backend.Commands
 
         private string GetUsage()
         {
-            if (subCommands.Any())
+            if (SubCommands.Any())
             {
                 return GetSubCommandsAsString();
             }

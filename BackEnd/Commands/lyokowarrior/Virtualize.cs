@@ -3,18 +3,18 @@ using LyokoAPI.Events;
 using LyokoAPI.Events.LWEvents;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
 
-namespace Backend.Commands.lyokowarrior
+namespace Backend.Commands.LyokoWarrior
 {
     public class Virtualize : Command
     {
-        public override string Name { get; set; } = "virt";
-        public override string Usage { get; } = "lw.virt.[warrior]";
-        public override int MinArgs { get; set; } = 1;
+        public override string Name => "virt";
+        public override string Usage => "lw.virt.[warrior]";
+        public override int MinArgs => 1;
 
         protected override void DoCommand(string[] args)
         {
             Output("args:"+ args[0]);
-            LyokoWarrior warrior = null;
+            LyokoAPI.VirtualEntities.LyokoWarrior.LyokoWarrior warrior = null;
             try
             { 
                 warrior = LyokoWarriors.GetByName(args[0].ToLower());

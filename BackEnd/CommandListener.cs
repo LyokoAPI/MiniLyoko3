@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Backend.Commands;
 using LyokoAPI.Events;
-using Backend.Commands.aelita;
-using Backend.Commands.lyokowarrior;
-using Backend.Commands.xana;
+using Backend.Commands.Aelita;
+using Backend.Commands.LyokoWarrior;
+using Backend.Commands.Xana;
 
 namespace BackEnd
 {

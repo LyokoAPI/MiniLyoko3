@@ -1,12 +1,12 @@
 using Domain;
 
-namespace Backend.Commands.aelita
+namespace Backend.Commands.Aelita
 {
     public class Aelita : Command
     {
-        public override string Name { get; set; } = "aelita";
-        public override string Usage { get; } = "aelita.[world].[sector].[towerNumber]";
-        public override int MaxArgs { get; set; } = 3;
+        public override string Name => "aelita";
+        public override string Usage => "aelita.[world].[sector].[towerNumber]";
+        public override int MaxArgs => 3;
         protected override void DoCommand(string[] args)
         {
             CheckLength(0, 3);

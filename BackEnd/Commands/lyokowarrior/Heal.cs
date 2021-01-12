@@ -2,17 +2,17 @@ using System.Linq;
 using LyokoAPI.Events.LWEvents;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
 
-namespace Backend.Commands.lyokowarrior
+namespace Backend.Commands.LyokoWarrior
 {
     public class Heal : Command
     {
-        public override string Name { get; set; } = "heal";
-        public override string Usage { get; } = "lw.heal.[warrior].[amount]";
-        public override int MinArgs { get; set; } = 2;
+        public override string Name => "heal";
+        public override string Usage => "lw.heal.[warrior].[amount]";
+        public override int MinArgs => 2;
 
         protected override void DoCommand(string[] args)
         {
-            LyokoWarrior warrior = LyokoWarriors.GetByName(args[0].ToLower());
+            LyokoAPI.VirtualEntities.LyokoWarrior.LyokoWarrior warrior = LyokoWarriors.GetByName(args[0].ToLower());
             if (warrior == null)
             {
                 throw new CommandException(this,"Invalid warrior!");

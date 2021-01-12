@@ -63,7 +63,7 @@ namespace Domain
                 Deactivate();
             }else if (newactivator != Activator)
             {
-                TowerHijackEvent.Call(new APITower(VirtualWorld.Name,Sector.Name,Number),newactivator,Activator);
+                TowerHijackEvent.Call(new APITower(VirtualWorld.Name,Sector.Name,Number),Activator,newactivator);
                 Activator = newactivator;
             }
         }

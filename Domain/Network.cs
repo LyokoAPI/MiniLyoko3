@@ -15,7 +15,7 @@ namespace Domain
         }
         private Network()
         {
-            
+
         }
 
         public VirtualWorld AddVirtualWorld(string virtualWorld)
@@ -33,6 +33,21 @@ namespace Domain
             }
 
             return null;
+        }
+
+        public Network RemoveVirtualWorld(string virtualWorld)
+        {
+            VirtualWorld world = GetVirtualWorld(virtualWorld);
+            return RemoveVirtualWorld(world);
+        }
+
+        public Network RemoveVirtualWorld(VirtualWorld virtualWorld)
+        {
+            if (GetVirtualWorld(virtualWorld.Name) != null)
+            {
+                VirtualWorlds.Remove(virtualWorld);
+            }
+            return this;
         }
 
         public VirtualWorld GetVirtualWorld(string name)

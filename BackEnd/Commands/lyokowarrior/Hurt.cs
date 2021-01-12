@@ -2,17 +2,17 @@ using System.Linq;
 using LyokoAPI.Events.LWEvents;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
 
-namespace Backend.Commands.lyokowarrior
+namespace Backend.Commands.LyokoWarrior
 {
     public class Hurt : Command
     {
-        public override string Name { get; set; } = "hurt";
-        public override string Usage { get; } = "lw.hurt.[warrior].[amount]";
-        public override int MinArgs { get; set; } = 2;
+        public override string Name => "hurt";
+        public override string Usage => "lw.hurt.[warrior].[amount]";
+        public override int MinArgs => 2;
 
         protected override void DoCommand(string[] args)
         {
-            LyokoWarrior warrior = LyokoWarriors.GetByName(args[0].ToLower());
+            LyokoAPI.VirtualEntities.LyokoWarrior.LyokoWarrior warrior = LyokoWarriors.GetByName(args[0].ToLower());
             if (warrior == null)
             {
                 throw new CommandException(this,"Invalid warrior!");
@@ -23,6 +23,7 @@ namespace Backend.Commands.lyokowarrior
             }
             LW_HurtEvent.Call(warrior,int.Parse(args[1]));
             Output(warrior.WarriorName + " hurt by "+args[1]);
+            if (warrior.HP < 0) LW_DevirtEvent.Call(warrior);
         }
     }
 }
