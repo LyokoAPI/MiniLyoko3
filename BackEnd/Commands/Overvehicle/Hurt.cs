@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using LyokoAPI.Events.OVEvents;
 using LyokoAPI.VirtualEntities.Overvehicle;
+using LyokoAPI.Commands;
+using LyokoAPI.Exceptions;
 
 namespace Backend.Commands.Overvehicle
 {

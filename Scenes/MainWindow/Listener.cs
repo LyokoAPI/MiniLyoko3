@@ -11,6 +11,7 @@ using Godot;
 using LyokoAPI.API;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using LyokoAPI.Commands;
 
 namespace MiniLyoko3
 {
@@ -18,12 +19,12 @@ namespace MiniLyoko3
     {
         private readonly RichTextLabel CommandOutput;
         private readonly RichTextLabel LogOutput;
-        private CommandListener _commandListener;
+        private MiniLyokoCommandListener _commandListener;
         public Listener(MainPanel panel)
         {
             CommandOutput = panel.CommandOutputBox;
             LogOutput = panel.LogText;
-            _commandListener = new CommandListener();
+            _commandListener = new MiniLyokoCommandListener();
 
             _commandListener.AddCommand(new Xana());
             _commandListener.AddCommand(new Tower());
@@ -35,7 +36,7 @@ namespace MiniLyoko3
             _commandListener.AddCommand(new VirtualWorldCommand());
 
             //Ensure Help command is always the last command to be added to the listener
-            List<Command> commands = _commandListener.GetCommands();
+            List<ICommand> commands = _commandListener.GetCommands();
             _commandListener.AddCommand(new Help(ref commands));
         }
 
@@ -47,7 +48,7 @@ namespace MiniLyoko3
 
         public override void onCommandInput(string input)
         {
-            _commandListener.OnCommand(input);
+            _commandListener.onCommandInput(input);
         }
 
         public override void onLyokoLog(string message)

@@ -2,6 +2,8 @@ using LyokoAPI.Events.LWEvents;
 using LyokoAPI.Events.OVEvents;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
 using LyokoAPI.VirtualEntities.Overvehicle;
+using LyokoAPI.Commands;
+using LyokoAPI.Exceptions;
 
 namespace Backend.Commands.LyokoWarrior
 {

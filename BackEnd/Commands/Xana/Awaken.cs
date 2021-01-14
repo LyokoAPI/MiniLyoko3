@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LyokoAPI.Commands;
+using LyokoAPI.Exceptions;
 
 namespace Backend.Commands.Xana
 {
@@ -14,6 +16,7 @@ namespace Backend.Commands.Xana
         protected override void DoCommand(string[] args)
         {
             LyokoAPI.Events.XanaAwakenEvent.Call();
+            Output("Xana Awakened");
         }
     }
 }

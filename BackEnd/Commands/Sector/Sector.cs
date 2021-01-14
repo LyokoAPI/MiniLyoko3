@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LyokoAPI.Commands;
 
 namespace Backend.Commands.SectorCommand
 {
@@ -11,7 +12,7 @@ namespace Backend.Commands.SectorCommand
         public override string Name => "sector";
         public override int MinArgs => 1;
 
-        public override List<Command> SubCommands { get; protected set; } = new List<Command>() { new Create(), new Destroy()};
+        public override List<ICommand> SubCommands { get; protected set; } = new List<ICommand>() { new Create(), new Destroy()};
 
         protected override void DoCommand(string[] args)
         {

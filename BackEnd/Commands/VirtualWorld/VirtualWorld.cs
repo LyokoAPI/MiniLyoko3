@@ -1,6 +1,7 @@
 ﻿using Backend.extensions;
 using Domain;
 using System.Collections.Generic;
+using LyokoAPI.Commands;
 
 namespace Backend.Commands.VirtualWorldCommand
 {
@@ -8,7 +9,7 @@ namespace Backend.Commands.VirtualWorldCommand
     {
         public override string Name => "world";
         public override int MinArgs => 1;
-        public override List<Command> SubCommands { get; protected set; } = new List<Command>() { new List(), new Sectors(), new Create(), new Destroy() };
+        public override List<ICommand> SubCommands { get; protected set; } = new List<ICommand>() { new List(), new Sectors(), new Create(), new Destroy() };
 
         protected override void DoCommand(string[] args)
         {

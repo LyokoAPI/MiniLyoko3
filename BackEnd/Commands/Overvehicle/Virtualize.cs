@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using LyokoAPI.Events.OVEvents;
 using LyokoAPI.VirtualEntities.Overvehicle;
+using LyokoAPI.Commands;
+using LyokoAPI.Exceptions;
+using LyokoAPI.Exceptions;
 
 namespace Backend.Commands.Overvehicle
 {

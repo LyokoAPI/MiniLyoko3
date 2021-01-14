@@ -3,6 +3,8 @@ using LyokoAPI.Events.LWEvents;
 using LyokoAPI.RealWorld.Location;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
 using LyokoAPI.VirtualStructures;
+using LyokoAPI.Commands;
+using LyokoAPI.Exceptions;
 
 namespace Backend.Commands.LyokoWarrior
 {

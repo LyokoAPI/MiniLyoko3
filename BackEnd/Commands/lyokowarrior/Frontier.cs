@@ -1,6 +1,8 @@
 using System.Linq;
 using LyokoAPI.Events.LWEvents;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
+using LyokoAPI.Commands;
+using LyokoAPI.Exceptions;
 
 namespace Backend.Commands.LyokoWarrior
 {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LyokoAPI.Commands;
 
 namespace Backend.Commands.TowerCommand
 {
@@ -11,7 +12,7 @@ namespace Backend.Commands.TowerCommand
         public override string Name => "tower";
         public override int MinArgs => 1;
 
-        public override List<Command> SubCommands { get; protected set; } = new List<Command>() { new Activate(), new Deactivate() };
+        public override List<ICommand> SubCommands { get; protected set; } = new List<ICommand>() { new Activate(), new Deactivate() };
 
         protected override void DoCommand(string[] args)
         {

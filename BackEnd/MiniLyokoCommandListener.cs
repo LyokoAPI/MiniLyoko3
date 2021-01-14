@@ -5,31 +5,17 @@ using LyokoAPI.Events;
 using Backend.Commands.Aelita;
 using Backend.Commands.LyokoWarrior;
 using Backend.Commands.Xana;
+using LyokoAPI.Commands;
 
 namespace BackEnd
 {
-    public class CommandListener
+    public class MiniLyokoCommandListener : CommandListener
     {
-        private List<Command> Commands=new List<Command>();
+        protected override string Prefix => "";
 
-        public void AddCommand(Command command)
+        public override void onCommandInput(string arg)
         {
-            Commands.Add(command);
-        }
-
-        public CommandListener()
-        {
-            //Commands = new List<Command>(){new Xana(), new Aelita(), new Devirtualize(), new Hurt(), new Kill(), new Virtualize(), new Heal(), new Frontier(),new Xanafy(), new Translate()};
-
-        }
-
-        public List<Command> GetCommands()
-        {
-            return Commands;
-        }
-        
-        public void OnCommand(string arg)
-        {
+            List<ICommand> Commands = GetCommands();
             string[] commandargs = arg.Split('.');
             var commandname = commandargs[0];
             if (commandargs.Length > 1)
@@ -41,7 +27,8 @@ namespace BackEnd
                 commandargs = new string[] { };
             }
             var command = Commands.Find(commandd => commandd.Name.Equals(commandname));
-            if(command!=null){
+            if (command != null)
+            {
                 command?.Run(commandargs);
             }
             else

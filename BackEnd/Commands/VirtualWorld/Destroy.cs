@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LyokoAPI.Events;
+using LyokoAPI.Commands;
+using LyokoAPI.Exceptions;
 
 namespace Backend.Commands.VirtualWorldCommand
 {
@@ -17,16 +19,13 @@ namespace Backend.Commands.VirtualWorldCommand
         protected override void DoCommand(string[] args)
         {
             VirtualWorld virtualWorld = Network.GetOrCreate().GetVirtualWorld(args[0]);
-            if (virtualWorld != null)
+            if (virtualWorld == null)
             {
-                VirtualWorldDestructionEvent.Call(args[0]);
-                Network.GetOrCreate().RemoveVirtualWorld(args[0]);
-                Output($"World {args[0]} destroyed!");
+                throw new CommandException(this, $"World {args[0]} doesnt exists!");
             }
-            else
-            {
-                Output($"World {args[0]} doesnt exists!");
-            }
+            VirtualWorldDestructionEvent.Call(args[0]);
+            Network.GetOrCreate().RemoveVirtualWorld(args[0]);
+            Output($"World {args[0]} destroyed!");
         }
     }
 }

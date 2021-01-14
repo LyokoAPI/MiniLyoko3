@@ -1,5 +1,7 @@
 ﻿using Backend.extensions;
 using Domain;
+using LyokoAPI.Commands;
+using LyokoAPI.Exceptions;
 
 namespace Backend.Commands.VirtualWorldCommand
 {
