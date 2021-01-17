@@ -1,16 +1,16 @@
-﻿using Backend.extensions;
+﻿using BackEnd.Extensions;
 using Domain;
 using LyokoAPI.API;
 using LyokoAPI.Events;
 using LyokoAPI.Commands;
 using LyokoAPI.Exceptions;
 
-namespace Backend.Commands.SectorCommand
+namespace BackEnd.Commands.SectorCommand
 {
     public class Create : Command
     {
         public override string Name => "create";
-        public override string Usage => "sector.create.[world].[sector].[tower]";
+        public override string Usage => "sector.create.<world>.<sector>.[towers]";
         public override int MinArgs => 2;
 
         protected override void DoCommand(string[] args)
@@ -23,7 +23,7 @@ namespace Backend.Commands.SectorCommand
             var virtualworld = Network.GetOrCreate().GetVirtualWorld(args[0]);
             if (virtualworld == null)
             {
-                throw new CommandException(this, "That virtual world does not exist!");
+                throw new CommandException(this, "That Virtual World Does Not Exist!");
             }
             if (virtualworld.GetSector(args[1]) == null)
             {

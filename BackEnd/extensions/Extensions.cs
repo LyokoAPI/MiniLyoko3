@@ -1,7 +1,7 @@
 using Domain;
 using LyokoAPI.VirtualEntities.Overvehicle;
 
-namespace Backend.extensions
+namespace BackEnd.Extensions
 {
     public static class Extensions
     {

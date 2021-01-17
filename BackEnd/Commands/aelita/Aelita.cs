@@ -2,7 +2,7 @@ using Domain;
 using LyokoAPI.Commands;
 using LyokoAPI.Exceptions;
 
-namespace Backend.Commands.Aelita
+namespace BackEnd.Commands.Aelita
 {
     public class Aelita : Command
     {
@@ -45,22 +45,19 @@ namespace Backend.Commands.Aelita
             var virtualworld = Network.GetOrCreate().GetVirtualWorld(virtualworldname);
             if (virtualworld == null)
             {
-                throw new CommandException(this, "That virtual world does not exist!");
+                throw new CommandException(this, "That Virtual World Does Not Exist!");
+            }
+            if (virtualworld.GetSector(sector) == null)
+            {
+                throw new CommandException(this, "That Sector Does Not Exist!");
             }
 
-            var tower = virtualworld.Activate(sector, id, "NONE");
+            var tower = virtualworld.Activate(sector, id, LyokoAPI.VirtualStructures.APIActivator.NONE);
             if (tower == null)
             {
-                if (virtualworld.GetSector(sector) == null)
-                {
-                    throw new CommandException(this, "that sector does not exist!");
-                }
-                else
-                {
-                    throw new CommandException(this, "that tower does not exist!");
-                }
+                throw new CommandException(this, "That Tower Does Not Exist!");
             }
-            Output("Tower deactivated");
+            Output("Tower Deactivated");
         }
         
     }

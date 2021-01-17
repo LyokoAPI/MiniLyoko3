@@ -93,7 +93,7 @@
     <Compile Include="Commands\Xana\Awaken.cs" />
     <Compile Include="Commands\Xana\Defeat.cs" />
     <Compile Include="Commands\Xana\Xana.cs" />
-    <Compile Include="extensions\Extensions.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,12 +4,12 @@ using System.Linq;
 using LyokoAPI.Commands;
 using LyokoAPI.Exceptions;
 
-namespace Backend.Commands
+namespace BackEnd.Commands
 {
     public class Help : Command
     {
         public override string Name => "help";
-        public override string Usage => "help.[command]";
+        public override string Usage => "help.[command/legend]";
         //public override int MaxArgs { get; set; } = 1;
         private List<ICommand> _commands;
 
@@ -48,6 +48,10 @@ namespace Backend.Commands
 
                 if (Icommand == null)
                 {
+                    if (args[0].ToLower() == "legend")
+                    {
+                        Output("<> Means the Argument is Mandatory!\n[] Means the Argument is Optional!");
+                    }else
                     throw new CommandException(this,$"Command: {args[0]} not found!");
                 }
                 else

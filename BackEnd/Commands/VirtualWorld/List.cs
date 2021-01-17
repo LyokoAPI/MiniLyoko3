@@ -1,9 +1,9 @@
-﻿using Backend.extensions;
+﻿using BackEnd.Extensions;
 using Domain;
 using LyokoAPI.Commands;
 using LyokoAPI.Exceptions;
 
-namespace Backend.Commands.VirtualWorldCommand
+namespace BackEnd.Commands.VirtualWorldCommand
 {
     public class List : Command
     {

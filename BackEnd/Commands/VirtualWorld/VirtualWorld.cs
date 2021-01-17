@@ -1,9 +1,9 @@
-﻿using Backend.extensions;
+﻿using BackEnd.Extensions;
 using Domain;
 using System.Collections.Generic;
 using LyokoAPI.Commands;
 
-namespace Backend.Commands.VirtualWorldCommand
+namespace BackEnd.Commands.VirtualWorldCommand
 {
     public class VirtualWorldCommand : Command
     {

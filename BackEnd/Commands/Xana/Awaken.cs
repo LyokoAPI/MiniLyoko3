@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using LyokoAPI.Commands;
 using LyokoAPI.Exceptions;
 
-namespace Backend.Commands.Xana
+namespace BackEnd.Commands.Xana
 {
     public class Awaken : Command
     {

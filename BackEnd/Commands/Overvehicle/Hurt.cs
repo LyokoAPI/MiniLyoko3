@@ -4,12 +4,12 @@ using LyokoAPI.VirtualEntities.Overvehicle;
 using LyokoAPI.Commands;
 using LyokoAPI.Exceptions;
 
-namespace Backend.Commands.Overvehicle
+namespace BackEnd.Commands.Overvehicle
 {
     public class Hurt : Command
     {
         public override string Name => "hurt";
-        public override string Usage => "ov.hurt.[overvehicle].[amount]";
+        public override string Usage => "ov.hurt.<overvehicle>.<amount>";
         public override int MinArgs => 2;
 
         protected override void DoCommand(string[] args)
@@ -21,10 +21,11 @@ namespace Backend.Commands.Overvehicle
             }
             if (overvehicle.Status!=OV_Status.VIRTUALIZED)
             {
-                throw new CommandException(this, "Can't hurt overvehicle!");
+                throw new CommandException(this, $"{overvehicle.OvervehicleName} not virtualised!");
             }
-            OV_HurtEvent.Call(overvehicle, int.Parse(args[1]));
-            Output(overvehicle.OvervehicleName + " hurt by " + args[1]);
+            int damage = CheckNumber(1);
+            OV_HurtEvent.Call(overvehicle, damage);
+            Output($"{overvehicle.OvervehicleName} hurt by {damage}");
             if (overvehicle.HP < 0) OV_DevirtEvent.Call(overvehicle);
         }
     }

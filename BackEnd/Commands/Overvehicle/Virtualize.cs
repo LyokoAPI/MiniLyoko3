@@ -8,15 +8,14 @@ using LyokoAPI.Events.OVEvents;
 using LyokoAPI.VirtualEntities.Overvehicle;
 using LyokoAPI.Commands;
 using LyokoAPI.Exceptions;
-using LyokoAPI.Exceptions;
 
-namespace Backend.Commands.Overvehicle
+namespace BackEnd.Commands.Overvehicle
 {
     public class Virtualize : Command
     {
         public override string Name => "virt";
 
-        public override string Usage => "ov.virt.[overvehicle]";
+        public override string Usage => "ov.virt.<overvehicle>";
         public override int MinArgs => 1;
 
         protected override void DoCommand(string[] args)
@@ -32,12 +31,11 @@ namespace Backend.Commands.Overvehicle
             }
             if (overvehicle == null)
             {
-                Output("No Overvehicle");
                 throw new CommandException(this, "Invalid Overvehicle!");
             }
-            Output("Overvehicle: " + overvehicle.OvervehicleName);
+            Output($"Overvehicle: {overvehicle.OvervehicleName}");
             OV_VirtEvent.Call(overvehicle, "forest");
-            Output(overvehicle.OvervehicleName + " Virtualized.");
+            Output($"{overvehicle.OvervehicleName} Virtualized.");
         }
     }
 }

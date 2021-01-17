@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LyokoAPI.Commands;
 
-namespace Backend.Commands.TowerCommand
+namespace BackEnd.Commands.TowerCommand
 {
     public class Tower : Command
     {

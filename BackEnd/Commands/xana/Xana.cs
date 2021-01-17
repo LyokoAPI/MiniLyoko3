@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using LyokoAPI.Commands;
 using LyokoAPI.Exceptions;
 
-namespace Backend.Commands.Xana
+namespace BackEnd.Commands.Xana
 {
     public class Xana : Command
     {

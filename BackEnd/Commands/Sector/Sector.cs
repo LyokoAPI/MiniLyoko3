@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LyokoAPI.Commands;
 
-namespace Backend.Commands.SectorCommand
+namespace BackEnd.Commands.SectorCommand
 {
     public class Sector : Command
     {

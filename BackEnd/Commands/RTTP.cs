@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using LyokoAPI.Events;
 using LyokoAPI.Commands;
 
-namespace Backend.Commands
+namespace BackEnd.Commands
 {
     public class RTTP : Command
     {

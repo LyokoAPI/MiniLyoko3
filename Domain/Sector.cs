@@ -1,3 +1,4 @@
+using LyokoAPI.VirtualStructures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Domain
         }
 
 
-        public Tower Activate(int id, string activator = "XANA")
+        public Tower Activate(int id, APIActivator activator = APIActivator.XANA)
         {
             var tower = GetTower(id);
             tower?.Activate(activator);
@@ -46,7 +47,7 @@ namespace Domain
             }
         }
 
-        public Tower ActivateRandom(string activator = "XANA")
+        public Tower ActivateRandom(APIActivator activator = APIActivator.XANA)
         {
             var tower = GetRandomTower();
             int tries = 0;

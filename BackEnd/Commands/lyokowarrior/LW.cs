@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using LyokoAPI.Commands;
 
-namespace Backend.Commands.LyokoWarrior
+namespace BackEnd.Commands.LyokoWarrior
 {
     public class LW : Command
     {

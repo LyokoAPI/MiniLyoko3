@@ -1,9 +1,9 @@
-using Backend.extensions;
+using BackEnd.Extensions;
 using Domain;
 using LyokoAPI.Commands;
 using LyokoAPI.Exceptions;
 
-namespace Backend.Commands.Xana
+namespace BackEnd.Commands.Xana
 {
 	public class Attack : Command
 	{
@@ -12,7 +12,7 @@ namespace Backend.Commands.Xana
 
 		protected override void DoCommand(string[] args)
 		{
-			Tower tower = Network.GetOrCreate().ActivateRandom("xana");
+			Tower tower = Network.GetOrCreate().ActivateRandom(LyokoAPI.VirtualStructures.APIActivator.XANA);
 			Output($"Activated tower: {tower.GetFullName()}");
 		}
 	}

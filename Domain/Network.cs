@@ -1,3 +1,4 @@
+using LyokoAPI.VirtualStructures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,7 +78,7 @@ namespace Domain
             return network;
         }
 
-        public Tower ActivateRandom(string activator)
+        public Tower ActivateRandom(APIActivator activator)
         {
             Random random = new Random();
             Tower tower;

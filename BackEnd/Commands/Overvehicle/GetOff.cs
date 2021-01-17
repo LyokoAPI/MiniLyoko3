@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 using LyokoAPI.VirtualEntities.Overvehicle;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
 using LyokoAPI.Events.OVEvents;
-using Backend.extensions;
+using BackEnd.Extensions;
 using LyokoAPI.Commands;
 using LyokoAPI.Exceptions;
 
-namespace Backend.Commands.Overvehicle
+namespace BackEnd.Commands.Overvehicle
 {
     public class GetOff : Command
     {
         public override string Name => "getoff";
-        public override string Usage => "ov.getoff.[overvehicle].[warrior]";
+        public override string Usage => "ov.getoff.<overvehicle>.<warrior>";
         public override int MinArgs => 2;
 
         protected override void DoCommand(string[] args)
@@ -32,11 +32,11 @@ namespace Backend.Commands.Overvehicle
             }
             if (overvehicle.Status != OV_Status.VIRTUALIZED)
             {
-                throw new CommandException(this, $"Can't ride {overvehicle.OvervehicleName}!");
+                throw new CommandException(this, $"{overvehicle.OvervehicleName} not virtualised!");
             }
             if (!warrior.Statuses.Contains(LW_Status.VIRTUALIZED))
             {
-                throw new CommandException(this, $"Can't ride {warrior.WarriorName}!");
+                throw new CommandException(this, $"{warrior.WarriorName} not virtualised!");
             }
             if (overvehicle.IsEmpty()) throw new CommandException(this, $"{overvehicle.OvervehicleName} is empty!");
             if (!overvehicle.IsRiding(warrior)) throw new CommandException(this, $"{warrior.WarriorName} not riding overvehicle!");

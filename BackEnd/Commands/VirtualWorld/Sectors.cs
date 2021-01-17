@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using LyokoAPI.Commands;
 using LyokoAPI.Exceptions;
 
-namespace Backend.Commands.VirtualWorldCommand
+namespace BackEnd.Commands.VirtualWorldCommand
 {
     public class Sectors : Command
     {
         public override string Name => "sectors";
-        public override string Usage => "world.sectors.[world]";
+        public override string Usage => "world.sectors.<world>";
         public override int MinArgs => 1;
 
         protected override void DoCommand(string[] args)
@@ -20,7 +20,7 @@ namespace Backend.Commands.VirtualWorldCommand
             var virtualworld = Network.GetOrCreate().GetVirtualWorld(args[0]);
             if (virtualworld == null)
             {
-                throw new CommandException(this, "That virtual world does not exist!");
+                throw new CommandException(this, "That Virtual World Does Not Exist!");
             }
             string list = "";
             foreach (Sector sector in virtualworld.Sectors)

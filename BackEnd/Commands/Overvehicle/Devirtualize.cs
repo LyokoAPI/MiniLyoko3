@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 using LyokoAPI.Commands;
 using LyokoAPI.Exceptions;
 
-namespace Backend.Commands.Overvehicle
+namespace BackEnd.Commands.Overvehicle
 {
     public class Devirtualize : Command
     {
         public override string Name => "devirt";
 
-        public override string Usage => "ov.devirt.[overvehicle]";
+        public override string Usage => "ov.devirt.<overvehicle>";
         public override int MinArgs => 1;
 
         protected override void DoCommand(string[] args)
@@ -24,7 +24,7 @@ namespace Backend.Commands.Overvehicle
                 throw new CommandException(this, "Invalid Overvehicle!");
             }
             OV_DevirtEvent.Call(warrior);
-            Output(warrior.OvervehicleName + " devirtualized.");
+            Output($"{warrior.OvervehicleName} Devirtualized.");
         }
     }
 }
