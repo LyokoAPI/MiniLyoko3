@@ -1,12 +1,14 @@
 using Domain;
+using LyokoAPI.Commands;
+using LyokoAPI.Exceptions;
 
-namespace Backend.Commands.aelita
+namespace BackEnd.Commands.Aelita
 {
     public class Aelita : Command
     {
-        public override string Name { get; set; } = "aelita";
-        public override string Usage { get; } = "aelita.[world].[sector].[towerNumber]";
-        public override int MaxArgs { get; set; } = 3;
+        public override string Name => "aelita";
+        public override string Usage => "aelita.[world].[sector].[towerNumber]";
+        public override int MaxArgs => 3;
         protected override void DoCommand(string[] args)
         {
             CheckLength(0, 3);
@@ -43,22 +45,19 @@ namespace Backend.Commands.aelita
             var virtualworld = Network.GetOrCreate().GetVirtualWorld(virtualworldname);
             if (virtualworld == null)
             {
-                throw new CommandException(this, "That virtual world does not exist!");
+                throw new CommandException(this, "That Virtual World Does Not Exist!");
+            }
+            if (virtualworld.GetSector(sector) == null)
+            {
+                throw new CommandException(this, "That Sector Does Not Exist!");
             }
 
-            var tower = virtualworld.Activate(sector, id, "NONE");
+            var tower = virtualworld.Activate(sector, id, LyokoAPI.VirtualStructures.APIActivator.NONE);
             if (tower == null)
             {
-                if (virtualworld.GetSector(sector) == null)
-                {
-                    throw new CommandException(this, "that sector does not exist!");
-                }
-                else
-                {
-                    throw new CommandException(this, "that tower does not exist!");
-                }
+                throw new CommandException(this, "That Tower Does Not Exist!");
             }
-            Output("Tower deactivated");
+            Output("Tower Deactivated");
         }
         
     }

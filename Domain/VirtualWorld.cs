@@ -1,3 +1,4 @@
+using LyokoAPI.VirtualStructures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,14 @@ namespace Domain
             return sectors.FirstOrDefault();
         }
 
-        public Tower Activate(string sector, int id, string activator = "XANA")
+        public Tower Activate(string sector, int id, APIActivator activator = APIActivator.XANA)
         {
-            return GetSector(sector)?.Activate(id,activator);
+            return GetSector(sector)?.Activate(id, activator);
+        }
+
+        public Tower Deactivate(string sector, int id)
+        {
+            return GetSector(sector)?.Activate(id, APIActivator.NONE);
         }
 
         public Tower GetTower(string sector, int number)
@@ -34,13 +40,24 @@ namespace Domain
         {
             if (GetSector(name) == null)
             {
-                Sectors.Add(new Sector(this,name,towers));
+                Sectors.Add(new Sector(this, name, towers));
             }
 
             return this;
         }
 
-        public Tower ActivateRandom(string activator = "XANA")
+        public VirtualWorld RemoveSector(string name)
+        {
+            Sector sector = GetSector(name);
+            if (sector != null)
+            {
+                Sectors.Remove(sector);
+            }
+
+            return this;
+        }
+
+        public Tower ActivateRandom(APIActivator activator = APIActivator.XANA)
         {
             Random random = new Random();
             var possibleSectors = Sectors.Where(sector => sector.Towers.Any())

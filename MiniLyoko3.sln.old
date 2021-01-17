@@ -1,0 +1,35 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniLyoko3", "MiniLyoko3.csproj", "{E6BA2715-50C7-4201-8763-9BF157200165}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{CCF112E0-7764-4B42-8D7F-078D5D10E401}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEnd", "BackEnd\BackEnd.csproj", "{8F2252AF-E037-4801-ACC6-1AA7E0E76908}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	Release|Any CPU = Release|Any CPU
+	Tools|Any CPU = Tools|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6BA2715-50C7-4201-8763-9BF157200165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6BA2715-50C7-4201-8763-9BF157200165}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6BA2715-50C7-4201-8763-9BF157200165}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6BA2715-50C7-4201-8763-9BF157200165}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6BA2715-50C7-4201-8763-9BF157200165}.Tools|Any CPU.ActiveCfg = Tools|Any CPU
+		{E6BA2715-50C7-4201-8763-9BF157200165}.Tools|Any CPU.Build.0 = Tools|Any CPU
+		{CCF112E0-7764-4B42-8D7F-078D5D10E401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCF112E0-7764-4B42-8D7F-078D5D10E401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCF112E0-7764-4B42-8D7F-078D5D10E401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCF112E0-7764-4B42-8D7F-078D5D10E401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCF112E0-7764-4B42-8D7F-078D5D10E401}.Tools|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCF112E0-7764-4B42-8D7F-078D5D10E401}.Tools|Any CPU.Build.0 = Debug|Any CPU
+		{8F2252AF-E037-4801-ACC6-1AA7E0E76908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F2252AF-E037-4801-ACC6-1AA7E0E76908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F2252AF-E037-4801-ACC6-1AA7E0E76908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F2252AF-E037-4801-ACC6-1AA7E0E76908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F2252AF-E037-4801-ACC6-1AA7E0E76908}.Tools|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F2252AF-E037-4801-ACC6-1AA7E0E76908}.Tools|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -33,11 +33,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LyokoAPI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\LyokoAPI.2.0.0-beta14\lib\LyokoAPI.dll</HintPath>
+      <HintPath>..\packages\LyokoAPI.2.0.0-beta15\lib\LyokoAPI.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="LyokoPluginLoader, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\LyokoPluginLoader.2.0.0-beta321\lib\LyokoPluginLoader.dll</HintPath>
+      <HintPath>..\packages\LyokoPluginLoader.2.0.0-beta322\lib\LyokoPluginLoader.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -51,23 +51,49 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandListener.cs" />
-    <Compile Include="Commands\aelita\Aelita.cs" />
+    <Compile Include="MiniLyokoCommandListener.cs" />
+    <Compile Include="Commands\Aelita\Aelita.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CommandException.cs" />
     <Compile Include="Commands\Help.cs" />
-    <Compile Include="Commands\lyokowarrior\Devirtualize.cs" />
-    <Compile Include="Commands\lyokowarrior\Frontier.cs" />
-    <Compile Include="Commands\lyokowarrior\Heal.cs" />
-    <Compile Include="Commands\lyokowarrior\Hurt.cs" />
-    <Compile Include="Commands\lyokowarrior\Kill.cs" />
-    <Compile Include="Commands\lyokowarrior\LW.cs" />
-    <Compile Include="Commands\lyokowarrior\Translate.cs" />
-    <Compile Include="Commands\lyokowarrior\Virtualize.cs" />
-    <Compile Include="Commands\lyokowarrior\Xanafy.cs" />
-    <Compile Include="Commands\xana\Attack.cs" />
-    <Compile Include="Commands\xana\Xana.cs" />
-    <Compile Include="extensions\Extensions.cs" />
+    <Compile Include="Commands\LyokoWarrior\CorruptDNA.cs" />
+    <Compile Include="Commands\LyokoWarrior\Detranslate.cs" />
+    <Compile Include="Commands\LyokoWarrior\Devirtualize.cs" />
+    <Compile Include="Commands\LyokoWarrior\Dexanafy.cs" />
+    <Compile Include="Commands\LyokoWarrior\FixDNA.cs" />
+    <Compile Include="Commands\LyokoWarrior\Frontier.cs" />
+    <Compile Include="Commands\LyokoWarrior\Heal.cs" />
+    <Compile Include="Commands\LyokoWarrior\Hurt.cs" />
+    <Compile Include="Commands\LyokoWarrior\Kill.cs" />
+    <Compile Include="Commands\LyokoWarrior\LW.cs" />
+    <Compile Include="Commands\LyokoWarrior\PermXanafy.cs" />
+    <Compile Include="Commands\LyokoWarrior\ResolveCodeEarth.cs" />
+    <Compile Include="Commands\LyokoWarrior\Translate.cs" />
+    <Compile Include="Commands\LyokoWarrior\Virtualize.cs" />
+    <Compile Include="Commands\LyokoWarrior\Xanafy.cs" />
+    <Compile Include="Commands\Overvehicle\Devirtualize.cs" />
+    <Compile Include="Commands\Overvehicle\GetOff.cs" />
+    <Compile Include="Commands\Overvehicle\Hurt.cs" />
+    <Compile Include="Commands\Overvehicle\OV.cs" />
+    <Compile Include="Commands\Overvehicle\Ride.cs" />
+    <Compile Include="Commands\Overvehicle\Virtualize.cs" />
+    <Compile Include="Commands\RTTP.cs" />
+    <Compile Include="Commands\Sector\Create.cs" />
+    <Compile Include="Commands\Sector\Destroy.cs" />
+    <Compile Include="Commands\Sector\Sector.cs" />
+    <Compile Include="Commands\Tower\Activate.cs" />
+    <Compile Include="Commands\Tower\Deactivate.cs" />
+    <Compile Include="Commands\Tower\Tower.cs" />
+    <Compile Include="Commands\VirtualWorld\Create.cs" />
+    <Compile Include="Commands\VirtualWorld\Destroy.cs" />
+    <Compile Include="Commands\VirtualWorld\List.cs" />
+    <Compile Include="Commands\VirtualWorld\Sectors.cs" />
+    <Compile Include="Commands\VirtualWorld\VirtualWorld.cs" />
+    <Compile Include="Commands\Xana\Attack.cs" />
+    <Compile Include="Commands\Xana\Awaken.cs" />
+    <Compile Include="Commands\Xana\Defeat.cs" />
+    <Compile Include="Commands\Xana\Xana.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +105,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

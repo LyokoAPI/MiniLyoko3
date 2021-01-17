@@ -1,9 +1,10 @@
-using Domain;
+/*using Domain;
 using LyokoAPI.Events;
+using LyokoAPI.Commands;
 
 namespace Backend.Commands
 {
-    public class CommandException : MiniLyokoException
+    public class CommandException : LyokoAPI.Exceptions.CommandException
     {
         public string ErrorMessage { get; }
         public string Command { get; }
@@ -20,3 +21,4 @@ namespace Backend.Commands
         }
     }
 }
+*/

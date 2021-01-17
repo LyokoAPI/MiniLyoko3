@@ -1,17 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using LyokoAPI.Commands;
+using LyokoAPI.Exceptions;
 
-namespace Backend.Commands
+namespace BackEnd.Commands
 {
     public class Help : Command
     {
-        public override string Name { get; set; } = "help";
-        public override string Usage { get; } = "help.[command]";
+        public override string Name => "help";
+        public override string Usage => "help.[command/legend]";
         //public override int MaxArgs { get; set; } = 1;
-        private List<Command> _commands;
+        private List<ICommand> _commands;
 
-        public Help(ref List<Command> commands)
+        public Help(ref List<ICommand> commands)
         {
             _commands = commands;
         }
@@ -25,28 +27,37 @@ namespace Backend.Commands
             }
             else
             {
-                Command command = _commands.SingleOrDefault(command1 =>
+                ICommand Icommand = _commands.SingleOrDefault(command1 =>
                     command1.Name.Equals(args[0], StringComparison.CurrentCultureIgnoreCase));
-                if (args.Length > 1)
+                if (Icommand is Command)
                 {
-                    if (command.subCommands.Count > 0)
+                    Command command = (Command)Icommand;
+                    if (args.Length > 1)
                     {
-                        string cmd = string.Join(".", args);
-                        List<string> tmp = cmd.Split('.').ToList();
-                        tmp.RemoveAt(0);
-                        cmd = string.Join(".", tmp);
-                        command = command.subCommands.SingleOrDefault(command1 =>
-                            command1.Name.Equals(cmd, StringComparison.CurrentCultureIgnoreCase));
+                        if (command.SubCommands.Count > 0)
+                        {
+                            string cmd = string.Join(".", args);
+                            List<string> tmp = cmd.Split('.').ToList();
+                            tmp.RemoveAt(0);
+                            cmd = string.Join(".", tmp);
+                            Icommand = command.SubCommands.SingleOrDefault(command1 =>
+                                command1.Name.Equals(cmd, StringComparison.CurrentCultureIgnoreCase));
+                        }
                     }
                 }
 
-                if (command == null)
+                if (Icommand == null)
                 {
-                    throw new CommandException(this,"Command not found!");
+                    if (args[0].ToLower() == "legend")
+                    {
+                        Output("<> Means the Argument is Mandatory!\n[] Means the Argument is Optional!");
+                    }else
+                    throw new CommandException(this,$"Command: {args[0]} not found!");
                 }
                 else
                 {
-                    Output(GetUsage(command));
+                    if (Icommand is Command)
+                        Output(GetUsage((Command)Icommand));
                 }
             }
         }
@@ -54,24 +65,19 @@ namespace Backend.Commands
 
         private string CommandList()
         {
-            string list = "[help";
+            string list = $"help: {Usage}";
             foreach (var command in _commands.GetRange(0,_commands.Count-1))
             {
-                list += $", {command.Name}";
+                if(command is Command)
+                list += $"\n{command.Name}: {((Command)command).Usage}";
             }
-
-            list += ("]");
 
             return list;
         }
 
         private string GetUsage(Command command)
         {
-            return $"usage: " + command.Usage;
+            return $"Usage: " + command.Usage;
         }
-
-        
-        
-        
     }
 }

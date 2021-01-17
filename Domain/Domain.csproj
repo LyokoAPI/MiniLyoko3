@@ -33,11 +33,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LyokoAPI, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\LyokoAPI.2.0.0-beta14\lib\LyokoAPI.dll</HintPath>
+      <HintPath>..\packages\LyokoAPI.2.0.0-beta15\lib\LyokoAPI.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="LyokoPluginLoader, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\LyokoPluginLoader.2.0.0-beta321\lib\LyokoPluginLoader.dll</HintPath>
+      <HintPath>..\packages\LyokoPluginLoader.2.0.0-beta322\lib\LyokoPluginLoader.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
