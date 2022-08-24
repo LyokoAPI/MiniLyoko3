@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using LyokoAPI.Commands;
 
-namespace Backend.Commands.lyokowarrior
+namespace BackEnd.Commands.LyokoWarrior
 {
     public class LW : Command
     {
-        public override string Name { get; set; } = "lw";
-        public override int MinArgs { get; set; } = 1;
+        public override string Name => "lw";
+        public override int MinArgs => 1;
 
-        public override List<Command> subCommands { get; protected set; } = new List<Command>() { new Virtualize(), new Devirtualize(), new Xanafy(), new Translate(), new Kill(), new Hurt(), new Heal(), new Frontier() };
+        public override List<ICommand> SubCommands { get; protected set; } = new List<ICommand>() { new Virtualize(), new Devirtualize(), new Xanafy(), new Translate(), new Detranslate(), new Kill(), new Hurt(), new Heal(), new Frontier(), new Dexanafy(), new PermXanafy(), new ResolveCodeEarth(), new CorruptDNA(), new FixDNA() };
 
         protected override void DoCommand(string[] args)
         {

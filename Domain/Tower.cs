@@ -22,49 +22,46 @@ namespace Domain
         
         
         
-        public void Activate(string activator = "XANA")
+        public void Activate(APIActivator activator = APIActivator.XANA)
         {
-            var newactivator = LyokoParser.ParseActivator(activator.ToUpper());
             if (!Activated)
             {
-                if (newactivator == APIActivator.NONE)
+                if (activator == APIActivator.NONE)
                 {
                     return;
                 }
 
-                Activator = newactivator;
-                TowerActivationEvent.Call(VirtualWorld.Name, Sector.Name, Number, newactivator.ToString());
+                Activator = activator;
+                TowerActivationEvent.Call(new APITower(VirtualWorld.Name, Sector.Name, Number), activator);
             }
             else
             {
-                if (newactivator == APIActivator.NONE)
+                if (activator == APIActivator.NONE)
                 {
                     Deactivate();
                     return;
                 }
-                if (newactivator != Activator)
+                if (activator != Activator)
                 {
-                    Hijack(newactivator.ToString());
+                    Hijack(activator);
                 }
                 
             }
         }
 
-        public void Hijack(string activator)
+        public void Hijack(APIActivator activator)
         {
-            var newactivator = LyokoParser.ParseActivator(activator.ToUpper());
-
             if (!Activated)
             {
                 Activate(activator);
             }
-            else if(newactivator == APIActivator.NONE)
+            else if(activator == APIActivator.NONE)
             {
                 Deactivate();
-            }else if (newactivator != Activator)
+            }else if (activator != Activator)
             {
-                TowerHijackEvent.Call(new APITower(VirtualWorld.Name,Sector.Name,Number),newactivator,Activator);
-                Activator = newactivator;
+                TowerHijackEvent.Call(new APITower(VirtualWorld.Name,Sector.Name,Number),Activator,activator);
+                Activator = activator;
             }
         }
 

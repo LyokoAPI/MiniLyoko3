@@ -1,3 +1,4 @@
+using LyokoAPI.VirtualStructures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Domain
         }
         private Network()
         {
-            
+
         }
 
         public VirtualWorld AddVirtualWorld(string virtualWorld)
@@ -33,6 +34,21 @@ namespace Domain
             }
 
             return null;
+        }
+
+        public Network RemoveVirtualWorld(string virtualWorld)
+        {
+            VirtualWorld world = GetVirtualWorld(virtualWorld);
+            return RemoveVirtualWorld(world);
+        }
+
+        public Network RemoveVirtualWorld(VirtualWorld virtualWorld)
+        {
+            if (GetVirtualWorld(virtualWorld.Name) != null)
+            {
+                VirtualWorlds.Remove(virtualWorld);
+            }
+            return this;
         }
 
         public VirtualWorld GetVirtualWorld(string name)
@@ -62,7 +78,7 @@ namespace Domain
             return network;
         }
 
-        public Tower ActivateRandom(string activator)
+        public Tower ActivateRandom(APIActivator activator)
         {
             Random random = new Random();
             Tower tower;

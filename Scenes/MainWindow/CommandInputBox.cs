@@ -24,32 +24,40 @@ public class CommandInputBox : Godot.LineEdit
  	public override void _Process(float delta)
   	{
 	    if (Input.IsActionPressed("ui_accept"))
-	  {
+	    {
 		    if (HasFocus())
 		    {
 			    _on_Button_pressed();
 		    }
         }
-        if (Input.IsActionJustPressed("ui_up"))
+        if (Input.IsActionJustPressed("ui_page_up"))
         {
             if (HasFocus())
             {
                 _GetLastCommand();
             }
         }
+        if (Input.IsActionJustPressed("ui_page_down"))
+        {
+            if (HasFocus())
+            {
+                _GetNextCommand();
+            }
+        }
     }
-	  private void _on_Button_pressed()
+
+	private void _on_Button_pressed()
     {
-	    if (Text == "" || Text.Empty())
+	    if (string.IsNullOrEmpty(Text))
 	    {
 		    return;
 	    }
 	    RichTextLabel node = GetParent().GetParent().GetParent().GetNode<RichTextLabel>("CommandPanel/RichTextLabel");
-	    node.Text += $">{GetText()}\n";
-        CommandInputEvent.Call(GetText());
-        LastCmds.Add(GetText());
-        currentCmd = 0;
-        SetText("");
+	    node.Text += $">{Text}\n";
+        CommandInputEvent.Call(Text);
+        LastCmds.Add(Text);
+        currentCmd = LastCmds.Count;
+        Text="";
     }
 
     private void _GetLastCommand()
@@ -58,10 +66,23 @@ public class CommandInputBox : Godot.LineEdit
         {
             currentCmd -= 1;
             if (currentCmd < 0)
+                currentCmd = 0;
+            string cmd = LastCmds[currentCmd];
+            Text = cmd;
+            CaretPosition = cmd.Length;
+        }
+    }
+
+    private void _GetNextCommand()
+    {
+        if (LastCmds.Count > 0)
+        {
+            currentCmd += 1;
+            if (currentCmd > LastCmds.Count - 1)
                 currentCmd = LastCmds.Count - 1;
             string cmd = LastCmds[currentCmd];
-            SetText(cmd);
-            SetCursorPosition(cmd.Length);
+            Text = cmd;
+            CaretPosition = cmd.Length;
         }
     }
 }

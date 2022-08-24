@@ -2,35 +2,27 @@ using System;
 using LyokoAPI.Events;
 using LyokoAPI.Events.LWEvents;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
+using LyokoAPI.Commands;
+using LyokoAPI.Exceptions;
 
-namespace Backend.Commands.lyokowarrior
+namespace BackEnd.Commands.LyokoWarrior
 {
     public class Virtualize : Command
     {
-        public override string Name { get; set; } = "virt";
-        public override string Usage { get; } = "lw.virt.[warrior]";
-        public override int MinArgs { get; set; } = 1;
+        public override string Name => "virt";
+        public override string Usage => "lw.virt.<warrior>";
+        public override int MinArgs => 1;
 
         protected override void DoCommand(string[] args)
         {
-            Output("args:"+ args[0]);
-            LyokoWarrior warrior = null;
-            try
-            { 
-                warrior = LyokoWarriors.GetByName(args[0].ToLower());
-            }
-            catch (Exception e)
-            {
-                LyokoLogger.Log(Name,e.ToString());
-            }
+            LyokoAPI.VirtualEntities.LyokoWarrior.LyokoWarrior warrior = LyokoWarriors.GetByName(args[0].ToLower());
             if (warrior == null)
             {
                 Output("no warrior");
-                throw new CommandException(this,"invalid warrior!");
+                throw new CommandException(this,"Invalid Warrior!");
             }
-            Output("warrior: "+warrior.WarriorName);
             LW_VirtEvent.Call(warrior,"forest");
-            Output(warrior.WarriorName + " virtualized.");
+            Output($"{warrior.WarriorName} virtualized.");
         }
     }
 }

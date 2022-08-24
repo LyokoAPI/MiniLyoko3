@@ -1,12 +1,17 @@
 using BackEnd;
-using Backend.Commands.xana;
-using Backend.Commands.lyokowarrior;
-using Backend.Commands.aelita;
-using Backend.Commands;
+using BackEnd.Commands.Xana;
+using BackEnd.Commands.LyokoWarrior;
+using BackEnd.Commands.Aelita;
+using BackEnd.Commands.Overvehicle;
+using BackEnd.Commands.TowerCommand;
+using BackEnd.Commands.SectorCommand;
+using BackEnd.Commands.VirtualWorldCommand;
+using BackEnd.Commands;
 using Godot;
 using LyokoAPI.API;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using LyokoAPI.Commands;
 
 namespace MiniLyoko3
 {
@@ -14,19 +19,24 @@ namespace MiniLyoko3
     {
         private readonly RichTextLabel CommandOutput;
         private readonly RichTextLabel LogOutput;
-        private CommandListener _commandListener;
+        private MiniLyokoCommandListener _commandListener;
         public Listener(MainPanel panel)
         {
             CommandOutput = panel.CommandOutputBox;
             LogOutput = panel.LogText;
-            _commandListener = new CommandListener();
+            _commandListener = new MiniLyokoCommandListener();
 
             _commandListener.AddCommand(new Xana());
+            _commandListener.AddCommand(new Tower());
+            _commandListener.AddCommand(new Sector());
             _commandListener.AddCommand(new LW());
             _commandListener.AddCommand(new Aelita());
+            _commandListener.AddCommand(new OV());
+            _commandListener.AddCommand(new RTTP());
+            _commandListener.AddCommand(new VirtualWorldCommand());
 
             //Ensure Help command is always the last command to be added to the listener
-            List<Command> commands = _commandListener.GetCommands();
+            List<ICommand> commands = _commandListener.GetCommands();
             _commandListener.AddCommand(new Help(ref commands));
         }
 
@@ -38,7 +48,7 @@ namespace MiniLyoko3
 
         public override void onCommandInput(string input)
         {
-            _commandListener.OnCommand(input);
+            _commandListener.onCommandInput(input);
         }
 
         public override void onLyokoLog(string message)
